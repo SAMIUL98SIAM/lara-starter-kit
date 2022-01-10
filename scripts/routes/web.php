@@ -20,9 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 // Route::view('/dashboard', 'backend.dashboard');
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['as'=>'app.','middleware'=>'auth'],function(){
-    Route::get('/home', [App\Http\Controllers\HomeController::class,'index'])->name('home');
+Route::group(['as'=>'app.','prefix'=>'app','middleware'=>['auth']],function(){
+    Route::get('/dashboard', App\Http\Controllers\Backend\DashboardController::class)->name('dashboard');
+
+    //Route::prefix('users')->group(function(){});
 });
 
