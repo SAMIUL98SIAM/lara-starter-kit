@@ -39,7 +39,7 @@
                     <tbody>
                         @foreach ($roles as $key=>$role)
                         <tr>
-                            <td class="text-center text-muted">{{$key}}</td>
+                            <td class="text-center text-muted">{{$key+1}}</td>
                             <td class="text-center">{{$role->name}}</td>
                             <td class="text-center">
                                 @if ($role->permissions->count() > 0)
@@ -59,7 +59,7 @@
                                         style="display: none;">
                                         @csrf()
                                         @method('DELETE')
-                                    </form>
+                                        </form>
                                 @endif
                             </td>
                         </tr>

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\RoleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,12 +14,10 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::group(['as'=>'app.','prefix'=>'app','middleware'=>['auth']],function(){
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//});
 
-Auth::routes();
-
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard',DashboardController::class)->name('dashboard');
+Route::resource('roles',RoleController::class);
 

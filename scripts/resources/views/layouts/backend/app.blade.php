@@ -16,6 +16,13 @@
     <!-- Styles -->
     <link href="{{ asset('backend/main.css') }}" rel="stylesheet">
     @stack('css')
+    <style type="text/css">
+        .notifyjs-corner{
+            z-index: 10000 !important;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div id="app">
@@ -27,6 +34,20 @@
                 <div class="app-main__outer">
                     <div class="app-main__inner">
                         @yield('content')
+                        @if(session()->has('success'))
+                        <script type="text/javascript">
+                            $(function(){
+                                $.notify("{{session()->get('success')}}",{globalPosition:'top right',className:'success'});
+                            });
+                        </script>
+                        @endif
+                        @if(session()->has('error'))
+                        <script type="text/javascript">
+                        $(function(){
+                            $.notify("{{session()->get('error')}}",{globalPosition:'top right',className:'error'});
+                        });
+                        </script>
+                        @endif
                     </div>
                 @include('layouts.backend.partials.footer')
                 </div>
@@ -39,6 +60,7 @@
     <script src="{{ asset('frontend/js/app.js') }}"></script>
     <script type="text/javascript" src="{{asset('backend/assets/scripts/main.js')}}"></script>
     <script src="{{asset('backend/assets/scripts/sweetalert2.js')}}"></script>
+    <!-- Izitoast -->
     @stack('js')
 </body>
 </html>

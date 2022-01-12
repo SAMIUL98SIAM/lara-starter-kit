@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use App\Models\Module;
 use App\Models\Role;
-use Illuminate\Http\Request;
+use App\Models\Permission;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\Roles\StoreRoleRequest;
+use App\Http\Requests\Roles\UpdateRoleRequest;
+use App\Models\Module;
+
 
 class RoleController extends Controller
 {
@@ -18,6 +23,7 @@ class RoleController extends Controller
      */
     public function index()
     {
+        Gate::authorize('app.roles.index');
         $data['roles'] = Role::all();
         return view('backend.roles.index',$data);
     }
@@ -29,6 +35,7 @@ class RoleController extends Controller
      */
     public function create()
     {
+        Gate::authorize('app.roles.create');
         $data['modules'] = Module::all();
         return view('backend.roles.form',$data);
     }
@@ -41,6 +48,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize('app.roles.index');
         $this->validate($request,[
             'name'=> 'required|unique:roles',
             'permissions'=>'required|array',
@@ -50,8 +58,7 @@ class RoleController extends Controller
             'name'=> $request->name ,
             'slug'=> Str::slug($request->name),
         ])->permissions()->sync($request->input('permissions'),[]);
-
-        return redirect()->route('app.roles.index');
+        return redirect()->route('app.roles.index')->with('success','Role Added');
     }
 
     /**
@@ -73,6 +80,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
+        Gate::authorize('app.roles.edit');
         // Gate::authrize('app.roles.edit');
         $data['modules'] = Module::all();
         return view('backend.roles.form',compact('role'),$data);
@@ -87,12 +95,13 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
+        Gate::authorize('app.roles.edit');
         $role->update([
             'name'=> $request->name ,
             'slug'=> Str::slug($request->name),
         ]);
-        $role->permissions()->sync($request->input('permissions'),[]);
-        return redirect()->route('app.roles.index');
+        $role->permissions()->sync($request->input('permissions'));
+        return redirect()->route('app.roles.index')->with('success','Role Updated');
     }
 
     /**
@@ -103,13 +112,13 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //Gate::authorize('app.roles.destroy');
+        Gate::authorize('app.roles.destroy');
         if ($role->deletable) {
             $role->delete();
-            //notify()->success("Role Successfully Deleted", "Deleted");
+            return redirect()->back()->with('Success','Role Deleted');
         } else {
-            //notify()->error("You can\'t delete system role.", "Error");
+            return redirect()->back()->with('error','Role Can not deletable');
         }
-        return redirect()->back();
+
     }
 }

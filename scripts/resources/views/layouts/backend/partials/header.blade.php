@@ -63,10 +63,10 @@
                         </div>
                         <div class="widget-content-left  ml-3 header-user-info">
                             <div class="widget-heading">
-                                Alina Mclourd
+                                {{Auth::user()->name}}
                             </div>
                             <div class="widget-subheading">
-                                VP People Manager
+                                {{Auth::user()->role->name}}
                             </div>
                         </div>
                     </div>

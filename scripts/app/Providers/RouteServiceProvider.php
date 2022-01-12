@@ -43,9 +43,19 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/api.php'));
 
+            //Customize Multiple route
+
+            //Backend Side Route
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
+
+            //Backend Side Route
+             Route::middleware('web','auth')
+                ->prefix('app')
+                ->name('app.')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/backend.php'));
         });
     }
 

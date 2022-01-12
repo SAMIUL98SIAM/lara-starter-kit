@@ -34,12 +34,20 @@
             <ul class="vertical-nav-menu">
                 <li class="app-sidebar__heading">Dashboards</li>
                 <li>
-                    <a href="index.html" class="mm-active">
+                    <a href="{{url('app/dashboard')}}" class="{{request()->is('app/dashboard') ? 'mm-active':''}}"  class="">
                         <i class="metismenu-icon pe-7s-rocket"></i>
-                        Dashboard Example 1
+                        Dashboard
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{url('app/roles')}}" class="{{request()->is('app/roles') ? 'mm-active':''}}">
+                        <i class="metismenu-icon pe-7s-rocket"></i>
+                        Role
+                    </a>
+                </li>
+
+                <li>
                     <a href="https://dashboardpack.com/theme-details/architectui-dashboard-html-pro/" target="_blank">
                         <i class="metismenu-icon pe-7s-graph2">
                         </i>
