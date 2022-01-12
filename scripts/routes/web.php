@@ -25,6 +25,6 @@ Auth::routes();
 Route::group(['as'=>'app.','prefix'=>'app','middleware'=>['auth']],function(){
     Route::get('/dashboard', App\Http\Controllers\Backend\DashboardController::class)->name('dashboard');
 
-    //Route::prefix('users')->group(function(){});
+    Route::resource('roles',\App\Http\Controllers\Backend\RoleController::class);
 });
 

@@ -14,8 +14,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('frontend/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/main.css') }}" rel="stylesheet">
+    @stack('css')
 </head>
 <body>
     <div id="app">
@@ -35,7 +35,10 @@
         </div>
     </div>
     <!-- Scripts -->
-    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
-    <script type="text/javascript" src="{{asset('/frontend/assets/scripts/main.js')}}"></script>
+    <script src="{{ asset('scripts/resources/js/frontend.js') }}"></script>
+    <script src="{{ asset('frontend/js/app.js') }}"></script>
+    <script type="text/javascript" src="{{asset('backend/assets/scripts/main.js')}}"></script>
+    <script src="{{asset('backend/assets/scripts/sweetalert2.js')}}"></script>
+    @stack('js')
 </body>
 </html>
