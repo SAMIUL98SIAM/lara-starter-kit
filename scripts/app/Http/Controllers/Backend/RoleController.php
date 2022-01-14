@@ -58,6 +58,7 @@ class RoleController extends Controller
             'name'=> $request->name ,
             'slug'=> Str::slug($request->name),
         ])->permissions()->sync($request->input('permissions'),[]);
+        notify()->success('User Successfully Added.', 'Added');
         return redirect()->route('app.roles.index')->with('success','Role Added');
     }
 
@@ -101,7 +102,8 @@ class RoleController extends Controller
             'slug'=> Str::slug($request->name),
         ]);
         $role->permissions()->sync($request->input('permissions'));
-        return redirect()->route('app.roles.index')->with('success','Role Updated');
+        notify()->success('Role Successfully Updated.', 'Updated');
+        return redirect()->route('app.roles.index');
     }
 
     /**
@@ -115,9 +117,11 @@ class RoleController extends Controller
         Gate::authorize('app.roles.destroy');
         if ($role->deletable) {
             $role->delete();
-            return redirect()->back()->with('Success','Role Deleted');
+            notify()->error('Role Deleted','Success');
+            return redirect()->back();
         } else {
-            return redirect()->back()->with('error','Role Can not deletable');
+            notify()->error('Role Can not deletable','Success');
+            return redirect()->back();
         }
 
     }

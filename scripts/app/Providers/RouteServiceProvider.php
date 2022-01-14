@@ -45,7 +45,7 @@ class RouteServiceProvider extends ServiceProvider
 
             //Customize Multiple route
 
-            //Backend Side Route
+            //Frontend Side Route
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));

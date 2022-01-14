@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2022 at 11:42 PM
+-- Generation Time: Jan 13, 2022 at 12:25 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -154,7 +154,10 @@ INSERT INTO `permission_role` (`id`, `permission_id`, `role_id`, `created_at`, `
 (6, 6, 1, NULL, NULL),
 (7, 7, 1, NULL, NULL),
 (8, 8, 1, NULL, NULL),
-(9, 9, 1, NULL, NULL);
+(9, 9, 1, NULL, NULL),
+(80, 1, 2, NULL, NULL),
+(81, 4, 2, NULL, NULL),
+(82, 5, 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -223,8 +226,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `email_verified_at`, `password`, `status`, `remember_token`, `last_login_at`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Admin', 'admin@mail.com', NULL, '$2y$10$QUBNfpSjv9qXxMr5t8m2Gu0TWxZWswYIVKeKmDMgRQm3xWnX40RIa', 1, NULL, NULL, '2022-01-10 11:54:59', '2022-01-10 11:54:59'),
-(2, 2, 'Jone Doe', 'user@mail.com', NULL, '$2y$10$wA5k2L8mQODb7l.k0F5Ud.zp9c0wPPT3gKOAo3J7fnEYEpBAISeuK', 1, NULL, NULL, '2022-01-10 11:54:59', '2022-01-10 11:54:59');
+(1, 1, 'Admin', 'admin@mail.com', NULL, '$2y$10$QUBNfpSjv9qXxMr5t8m2Gu0TWxZWswYIVKeKmDMgRQm3xWnX40RIa', 1, 'LPiXDTgpyrggUWMFgIrbfbGFor8uLo6muIWSrEPBRlOvMjbARTgycbNF7BF1', NULL, '2022-01-10 11:54:59', '2022-01-10 11:54:59');
 
 --
 -- Indexes for dumped tables
@@ -326,7 +328,7 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `permission_role`
 --
 ALTER TABLE `permission_role`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -338,7 +340,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`

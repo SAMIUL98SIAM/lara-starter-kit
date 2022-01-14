@@ -34,16 +34,23 @@
             <ul class="vertical-nav-menu">
                 <li class="app-sidebar__heading">Dashboards</li>
                 <li>
-                    <a href="{{url('app/dashboard')}}" class="{{request()->is('app/dashboard') ? 'mm-active':''}}"  class="">
+                    <a href="{{url('app/dashboard')}}" class="{{Request::is('app/dashboard') ? 'mm-active':''}}"  class="">
                         <i class="metismenu-icon pe-7s-rocket"></i>
                         Dashboard
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{url('app/roles')}}" class="{{request()->is('app/roles') ? 'mm-active':''}}">
-                        <i class="metismenu-icon pe-7s-rocket"></i>
+                    <a href="{{route('app.roles.index')}}" class="{{Request::is('app/roles*') ? 'mm-active':''}}">
+                        <i class="metismenu-icon pe-7s-check"></i>
                         Role
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{route('app.users.index')}}" class="{{Request::is('app/users*') ? 'mm-active':''}}">
+                        <i class="metismenu-icon pe-7s-user"></i>
+                        User
                     </a>
                 </li>
 
