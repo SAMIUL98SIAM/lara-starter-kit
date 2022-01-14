@@ -61,6 +61,11 @@ return [
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
+            //Customize By Samiul
+            'dump' => [
+                'dump_binary_path' => 'E:\xampp\mysql\bin', // your mysql bin location , hope this will help
+
+            ],
         ],
 
         'pgsql' => [

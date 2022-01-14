@@ -43,16 +43,24 @@
                 <li>
                     <a href="{{route('app.roles.index')}}" class="{{Request::is('app/roles*') ? 'mm-active':''}}">
                         <i class="metismenu-icon pe-7s-check"></i>
-                        Role
+                        Roles
                     </a>
                 </li>
 
                 <li>
                     <a href="{{route('app.users.index')}}" class="{{Request::is('app/users*') ? 'mm-active':''}}">
                         <i class="metismenu-icon pe-7s-user"></i>
-                        User
+                        Users
                     </a>
                 </li>
+
+                <li>
+                    <a href="{{route('app.backups.index')}}" class="{{Request::is('app/backups*') ? 'mm-active':''}}">
+                        <i class="metismenu-icon pe-7s-cloud"></i>
+                        Backups
+                    </a>
+                </li>
+
 
                 <li>
                     <a href="https://dashboardpack.com/theme-details/architectui-dashboard-html-pro/" target="_blank">

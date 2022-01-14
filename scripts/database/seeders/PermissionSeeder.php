@@ -24,7 +24,7 @@ class PermissionSeeder extends Seeder
         ]);
 
 
-
+        //Roles
         $moduleAppRole = Module::updateOrCreate(['name' => 'Role Management']);
         Permission::updateOrCreate([
             'module_id' => $moduleAppRole->id ,
@@ -77,6 +77,35 @@ class PermissionSeeder extends Seeder
             'module_id' => $moduleAppUser->id ,
             'name' => 'Delete User' ,
             'slug' => 'app.users.destroy'
+        ]);
+
+
+
+        //Backups
+
+        $moduleAppBackups = Module::updateOrCreate(['name' => 'Backups']);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppBackups->id ,
+            'name' => 'Access Backup' ,
+            'slug' => 'app.backups.index'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppBackups->id ,
+            'name' => 'Create Backup' ,
+            'slug' => 'app.backups.create'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppBackups->id ,
+            'name' => 'Download Backup' ,
+            'slug' => 'app.backups.download'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppBackups->id ,
+            'name' => 'Delete Backup' ,
+            'slug' => 'app.backups.destroy'
         ]);
     }
 }
