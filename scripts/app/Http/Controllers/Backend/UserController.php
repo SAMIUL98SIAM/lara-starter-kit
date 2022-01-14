@@ -48,8 +48,8 @@ class UserController extends Controller
                 'name'=> 'required|string|max:255',
                 'email'=>'required|string|email|max:255|unique:users',
                 'role'=>'required',
-                'password'=>'required|string|confirmed|min:8',
-                'avatar'=>'required|image'
+                'password'=>'required|string|confirmed|min:6',
+                'image'=>'required|image'
             ]
         );
 
@@ -62,10 +62,12 @@ class UserController extends Controller
             'status' => $request->filled('status'),
         ]);
 
-         // upload images
-         if ($request->hasFile('avatar')) {
-            $user->addMedia($request->avatar)->toMediaCollection('avatar');
-        }
+        $file = $request->file('image');
+        //@unlink(public_path('upload/logo_image'.$logo->image));
+        $filename = date('YmdHi').$file->getClientOriginalName();
+        $file->move(('uploads/user_images'),$filename);
+        $user['image'] = $filename;
+        $user->save();
         notify()->success('User Successfully Added.', 'Added');
         return redirect()->route('app.users.index');
 
@@ -79,7 +81,9 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        Gate::authorize('app.users.create');
+        $data['roles'] = Role::all();
+        return view('backend.users.show',compact('user'),$data);
     }
 
     /**
@@ -90,7 +94,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        Gate::authorize('app.users.edit');
+        // Gate::authrize('app.roles.edit');
+        $data['roles'] = Role::all();
+        return view('backend.users.form',compact('user'),$data);
     }
 
     /**
@@ -102,7 +109,32 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        Gate::authorize('app.users.edit');
+        $this->validate( $request,[
+                'name'=> 'required|string|max:255',
+                'email'=>'required|string|email|max:255',
+                'role'=>'required',
+                'password'=>'nullable|string|confirmed|min:6',
+                'image'=>'nullable|image'
+            ]
+        );
+
+        $user->update([
+            'role_id' => $request->role,
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' =>  isset($request->password) ? Hash::make($request->password) : $user->password,
+            'status' => $request->filled('status'),
+        ]);
+
+        $file = $request->file('image');
+        @unlink('uploads/user_images'.$user->image);
+        $filename = date('YmdHi').$file->getClientOriginalName();
+        $file->move(('uploads/user_images'),$filename);
+        $user['image'] = $filename;
+        $user->save();
+        notify()->success('User Successfully Updated.', 'Updated');
+        return redirect()->route('app.users.index');
     }
 
     /**
@@ -113,9 +145,9 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-       Gate::authorize('app.users.destroy');
-       $user->delete();
-
-       return redirect()->back();
+        Gate::authorize('app.users.destroy');
+        $user->delete();
+        notify()->error('User Deleted','Success');
+        return redirect()->back();
     }
 }

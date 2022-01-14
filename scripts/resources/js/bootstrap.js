@@ -1,14 +1,10 @@
 window._ = require('lodash');
 
+
 try {
-    window.$ = window.jQuery = require('jquery');
-    window.iziToast = require('izitoast/dist/js/iziToast.min.js');
-    window.Swal = require('sweetalert2');
-    require('select2');
-    // Dropify
-    require('dropify/src/js/dropify');
-    // Nestable
-    require('nestable2/jquery.nestable');
+    window.Popper = require('popper.js').default;
+
+    require('bootstrap');
 } catch (e) {}
 
 /**
@@ -37,3 +33,4 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+

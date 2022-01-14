@@ -3,8 +3,6 @@
 @push('css')
     <!-- Select2 --->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <!-- Dropify -->
-    <link rel="stylesheet" href="{{asset('backend/css/dropify.min.css')}}"/>
 @endpush
 
 
@@ -13,7 +11,7 @@
     <div class="page-title-wrapper">
         <div class="page-title-heading">
             <div class="page-title-icon">
-                <i class="pe-7s-check icon-gradient bg-mean-fruit">
+                <i class="pe-7s-users icon-gradient bg-mean-fruit">
                 </i>
             </div>
             <div><div>{{ isset($user) ? 'Edit' : 'Create New' }} User</div></div>
@@ -106,7 +104,7 @@
                                 <select class="js-example-basic-single form-control @error('role') is-invalid @enderror" name="role">
                                     <option value="">Select Role</option>
                                     @foreach ($roles as $role)
-                                    <option value="{{$role->id}}">{{$role->name}}</option>
+                                    <option value="{{$role->id}}"{{(@$user->role->id == $role->id)?'selected':''}}>{{$role->name}}</option>
                                     @endforeach
                                 </select>
 
@@ -120,10 +118,10 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="avatar">Avatar</label>
-                                <input id="avatar" type="file" class="dropify form-control @error('avatar') is-invalid @enderror" name="avatar">
+                                <label for="image">Image</label>
+                                <input type="file" name="image" @isset($user) class="form-control @error('image') is-invalid @enderror" @endisset id="image">
 
-                                @error('avatar')
+                                @error('image')
                                 <p class="p-2">
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -132,11 +130,19 @@
                                 @enderror
                             </div>
 
+                            <div class="form-group">
+                                <img id="showImage" src="{{!empty($user->image)?url('/uploads/user_images/'.$user->image):url('/uploads/no_image.jpg')}}" height="150px" width="130px;" alt="Card image cap"/>
+                            </div>
+
 
 
                             <div class="form-group">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" name="status" id="status" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                    <input class="form-check-input" name="status" id="status" type="checkbox" role="switch" id="flexSwitchCheckDefault"
+                                    @isset($user)
+                                    {{$user->status == true ?'checked':'' }}
+                                    @endisset
+                                    >
                                     <label class="form-check-label" for="flexSwitchCheckDefault">Status</label>
                                   </div>
                                 @error('status')
@@ -177,12 +183,17 @@
         });
     </script>
     <!-- Dropify -->
-    <script src="{{asset('backend/assets/scripts/dropify.min.js')}}"></script>
-    <script>
+    <script type="text/javascript">
         $(document).ready(function(){
-            $('.dropify').dropify();
+            $('#image').change(function(e){
+                var reader = new FileReader();
+                reader.onload = function(e)
+                {
+                    $('#showImage').attr('src',e.target.result);
+                }
+                reader.readAsDataURL(e.target.files['0']);
+            });
         });
-
     </script>
 @endpush
 

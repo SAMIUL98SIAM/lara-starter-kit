@@ -11,7 +11,7 @@
     <div class="page-title-wrapper">
         <div class="page-title-heading">
             <div class="page-title-icon">
-                <i class="pe-7s-check icon-gradient bg-mean-fruit">
+                <i class="pe-7s-users icon-gradient bg-mean-fruit">
                 </i>
             </div>
             <div>Users</div>
@@ -32,7 +32,6 @@
                             <th class="text-center">#</th>
                             <th class="text-center">Name</th>
                             <th class="text-center">Email</th>
-                            <th class="text-center">Permission</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Joined At</th>
                             <th class="text-center">Actions</th>
@@ -48,7 +47,7 @@
                                             <div class="widget-content-left mr-3">
                                                 <div class="widget-content-left">
                                                     <img width="40" class="rounded-circle"
-                                                         src="{{config('app.placeholder').'160' }}" alt="User Avatar">
+                                                    src="{{!empty($user->image)?url('/uploads/user_images/'.$user->image):url('/uploads/no_image.jpg')}}" alt="User Avatar">
                                                 </div>
                                             </div>
                                             <div class="widget-content-left flex2">

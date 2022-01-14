@@ -19,6 +19,12 @@
 
     <!-- Izitoast -->
     <link rel="stylesheet" href="{{asset('backend/izitoast/css/iziToast.css')}}">
+
+    <!-- jQuery -->
+    <script src="{{asset('backend/assets/plugins/jquery/jquery.min.js')}}"></script>
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{asset('backend/assets/plugins/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
     @stack('css')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
