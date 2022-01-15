@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\String\ByteString;
 
 class BackupController extends Controller
 {
@@ -33,7 +34,7 @@ class BackupController extends Controller
                 $backups[] = [
                     'file_path' => $f,
                     'file_name' => $file_name,
-                    'file_size' => '',
+                    'file_size' => $disk->size($f),
                     'created_at' => Carbon::parse($disk->lastModified($f))->diffForHumans(),
                     //'download_link' => action([Backend\BackupController::class,'download'], [$file_name]),
                 ];

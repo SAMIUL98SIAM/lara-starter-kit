@@ -50,8 +50,8 @@
                                     <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                 </a>
                                 <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                    <a href="" tabindex="0" class="dropdown-item">Profile</a>
-                                    <a href="" tabindex="0" class="dropdown-item">Change Password</a>
+                                    <a href="{{route('app.profile.index')}}" tabindex="0" class="dropdown-item">Profile</a>
+                                    <a href="{{route('app.profile.password.change')}}" tabindex="0" class="dropdown-item">Change Password</a>
                                     <a href="" tabindex="0" class="dropdown-item">Settings</a>
                                     <div tabindex="-1" class="dropdown-divider"></div>
                                     <button type="button" tabindex="0" class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</button>

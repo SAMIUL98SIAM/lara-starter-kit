@@ -68,7 +68,7 @@
                             <td class="text-center">
                                 <code>{{ $backup['file_name'] }}</code>
                             </td>
-                            <td class="text-center"></td>
+                            <td class="text-center">{{ $backup['file_size'] }}</td>
                             <td class="text-center">{{ $backup['created_at'] }}</td>
                             <td class="text-center">
                                 <a href="{{route('app.backups.download',$backup['file_name'])}}" class="btn btn-primary btn-sm"><i class="fa fa-download"><span> Download</span></i></a>
