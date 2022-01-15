@@ -5,6 +5,8 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\BackupController;
+use App\Http\Controllers\Backend\MenuBuilderController;
+use App\Http\Controllers\Backend\MenuController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\PageController;
 
@@ -44,4 +46,21 @@ Route::post('profile/security', [ProfileController::class, 'updatePassword'])->n
 
 //Page
 Route::resource('pages', PageController::class);
+
+//Menu
+Route::resource('menus',MenuController::class)->except(['show']);
+Route::group(['as'=>'menus.','prefix'=>'menus/{id}'],function(){
+    Route::get('builder',[MenuBuilderController::class,'index'])->name('builder');
+
+    Route::get('item/create', [MenuBuilderController::class, 'itemCreate'])->name('item.create');
+    Route::post('/store', [MenuBuilderController::class, 'itemStore'])->name('item.store');
+    // Route::group(['as' => 'item.', 'prefix' => 'item'], function () {
+    //     Route::get('/create', [MenuBuilderController::class, 'itemCreate'])->name('create');
+    //     Route::post('/store', [MenuBuilderController::class, 'itemStore'])->name('store');
+    //     Route::get('/{itemId}/edit', [MenuBuilderController::class, 'itemEdit'])->name('edit');
+    //     Route::put('/{itemId}/update', [MenuBuilderController::class, 'itemUpdate'])->name('update');
+    //     Route::delete('/{itemId}/destroy', [MenuBuilderController::class, 'itemDestroy'])->name('destroy');
+    // });
+});
+
 
