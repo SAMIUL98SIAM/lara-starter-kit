@@ -63,7 +63,6 @@ class UserController extends Controller
         ]);
 
         $file = $request->file('image');
-        //@unlink(public_path('upload/logo_image'.$logo->image));
         $filename = date('YmdHi').$file->getClientOriginalName();
         $file->move(('uploads/user_images'),$filename);
         $user['image'] = $filename;

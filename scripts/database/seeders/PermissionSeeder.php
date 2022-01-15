@@ -53,7 +53,6 @@ class PermissionSeeder extends Seeder
 
 
         //Users
-
         $moduleAppUser = Module::updateOrCreate(['name' => 'User Management']);
         Permission::updateOrCreate([
             'module_id' => $moduleAppUser->id ,
@@ -82,7 +81,6 @@ class PermissionSeeder extends Seeder
 
 
         //Backups
-
         $moduleAppBackups = Module::updateOrCreate(['name' => 'Backups']);
         Permission::updateOrCreate([
             'module_id' => $moduleAppBackups->id ,
@@ -106,6 +104,30 @@ class PermissionSeeder extends Seeder
             'module_id' => $moduleAppBackups->id ,
             'name' => 'Delete Backup' ,
             'slug' => 'app.backups.destroy'
+        ]);
+
+
+        // Page management
+        $moduleAppPage = Module::updateOrCreate(['name' => 'Page Management']);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppPage->id,
+            'name' => 'Access Pages',
+            'slug' => 'app.pages.index',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppPage->id,
+            'name' => 'Create Page',
+            'slug' => 'app.pages.create',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppPage->id,
+            'name' => 'Edit Page',
+            'slug' => 'app.pages.edit',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppPage->id,
+            'name' => 'Delete Page',
+            'slug' => 'app.pages.destroy',
         ]);
     }
 }

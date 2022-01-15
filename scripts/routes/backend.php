@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\BackupController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\PageController;
 
 
 /*
@@ -37,10 +38,10 @@ Route::delete('backups', [BackupController::class, 'clean'])->name('backups.clea
 Route::get('profile',[ProfileController::class,'index'])->name('profile.index');
 Route::post('profile',[ProfileController::class,'update'])->name('profile.update');
 
-// Security
+//Security
 Route::get('profile/security', [ProfileController::class, 'changePassword'])->name('profile.password.change');
 Route::post('profile/security', [ProfileController::class, 'updatePassword'])->name('profile.password.update');
 
-
-
+//Page
+Route::resource('pages', PageController::class);
 
