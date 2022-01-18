@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::get('/test',function(){
+  return menu('menu-sub') ;
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
