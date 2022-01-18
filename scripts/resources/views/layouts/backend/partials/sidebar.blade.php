@@ -68,6 +68,13 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{route('app.menus.index')}}" class="{{Request::is('app/menus*') ? 'mm-active':''}}">
+                        <i class="metismenu-icon pe-7s-menu"></i>
+                        Menus
+                    </a>
+                </li>
+
 
                 <li>
                     <a href="https://dashboardpack.com/theme-details/architectui-dashboard-html-pro/" target="_blank">

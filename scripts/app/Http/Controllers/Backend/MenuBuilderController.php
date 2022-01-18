@@ -23,6 +23,33 @@ class MenuBuilderController extends Controller
         return view('backend.menus.builder',compact('menu'));
     }
 
+    public function order(Request $request, $id)
+    {
+        Gate::authorize('app.menus.index');
+        $menuItemOrder = json_decode($request->get('order'));
+        $this->orderMenu($menuItemOrder,null);
+    }
+
+
+    private function orderMenu(array $menuItems, $parentId)
+    {
+        foreach ($menuItems as $key => $item)
+        {
+            $menuItem = MenuItem::findOrFail($item->id);
+            $menuItem->update([
+                'order'=> $key+1 ,
+                'parent_id' => $parentId
+            ]);
+
+            if (isset($item->children))
+            {
+                $this->orderMenu($item->children,$menuItem->id);
+            }
+        }
+    }
+
+
+
     /**
      * Create new menu item
      * @param $id

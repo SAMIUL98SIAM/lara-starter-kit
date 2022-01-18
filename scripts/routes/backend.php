@@ -50,6 +50,7 @@ Route::resource('pages', PageController::class);
 //Menu
 Route::resource('menus',MenuController::class)->except(['show']);
 Route::group(['as'=>'menus.','prefix'=>'menus/{id}'],function(){
+    Route::post('order',[MenuBuilderController::class,'order'])->name('order');
     Route::get('builder',[MenuBuilderController::class,'index'])->name('builder');
 
     Route::group(['as' => 'item.', 'prefix' => 'item'], function () {
