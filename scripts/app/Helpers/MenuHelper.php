@@ -3,7 +3,7 @@
 if (!function_exists('menu')) {
 
     /**
-     * description
+     * Get menu with items & childs by name
      *
      * @param
      * @return

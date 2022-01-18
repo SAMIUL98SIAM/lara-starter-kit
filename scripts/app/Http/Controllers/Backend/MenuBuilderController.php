@@ -103,7 +103,8 @@ class MenuBuilderController extends Controller
     {
         Gate::authorize('app.menus.edit');
         $menu = Menu::findOrFail($menuId);
-        $menuItem = $menu->menuItems()->findOrFail($itemId);
+        //$menuItem = $menu->menuItems()->findOrFail($itemId);
+        $menuItem = MenuItem::where('menu_id',$menu->id)->findOrFail($itemId);
         return view('backend.menus.item.form',compact('menu','menuItem'));
     }
 
@@ -127,7 +128,7 @@ class MenuBuilderController extends Controller
 
 
         $menu = Menu::findOrFail($menuId);
-        $menu->menuItems()->findOrFail($itemId)->update([
+        $menuItem = MenuItem::where('menu_id',$menu->id)->findOrFail($itemId)->update([
             'type' => $request->type,
             'title' => $request->title,
             'divider_title' => $request->divider_title,
