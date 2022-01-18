@@ -1,5 +1,6 @@
 @extends('layouts.backend.app')
 
+
 @section('content')
     <div class="app-page-title">
         <div class="page-title-wrapper">
@@ -46,8 +47,9 @@
                         <div class="form-group">
                             <label for="type">Type</label>
                             <select class="custom-select" id="type" name="type" onchange="setItemType()">
-                                <option value="item" @isset($menuItem) {{ $menuItem == 'item' ? 'selected' : '' }} @endisset>Menu Item</option>
-                                <option value="divider" @isset($menuItem) {{ $menuItem == 'divider' ? 'selected' : '' }} @endisset>Divider</option>
+                                <option value="">Select Menu Type</option>
+                                <option value="item" {{(@$menuItem->type=='item')?"selected":""}}>Menu Item</option>
+                                <option value="divider" {{(@$menuItem->type=='divider')?"selected":""}}>Divider</option>
                             </select>
                         </div>
 
@@ -87,8 +89,8 @@
                                        placeholder="URL" value="{{ isset($menuItem) ? $menuItem->url : old('url') }}">
                                 @error('url')
                                 <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
 
@@ -107,8 +109,8 @@
                                 </select>
                                 @error('target')
                                 <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
 
@@ -123,16 +125,16 @@
                                        autofocus>
                                 @error('icon_class')
                                 <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
 
-                        <button type="button" class="btn btn-danger" onClick="resetForm('itemFrom')">
+                        {{-- <button type="button" class="btn btn-danger" onClick="resetForm('itemFrom')">
                             <i class="fas fa-redo"></i>
                             <span>Reset</span>
-                        </button>
+                        </button> --}}
 
                         <button type="submit" class="btn btn-primary">
                             @isset($menuItem)

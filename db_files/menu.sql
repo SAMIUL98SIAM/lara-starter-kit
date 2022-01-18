@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2022 at 07:55 PM
+-- Generation Time: Jan 15, 2022 at 10:48 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -76,6 +76,14 @@ CREATE TABLE `menus` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `menus`
+--
+
+INSERT INTO `menus` (`id`, `name`, `description`, `deletable`, `created_at`, `updated_at`) VALUES
+(1, 'menu-query', 'this is test menu for test purpose', 1, '2022-01-15 13:20:26', '2022-01-15 13:24:50'),
+(2, 'menu-sub', NULL, 0, '2022-01-15 13:27:27', '2022-01-15 13:27:27');
+
 -- --------------------------------------------------------
 
 --
@@ -96,6 +104,16 @@ CREATE TABLE `menu_items` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `menu_items`
+--
+
+INSERT INTO `menu_items` (`id`, `menu_id`, `type`, `parent_id`, `order`, `title`, `divider_title`, `url`, `target`, `icon_class`, `created_at`, `updated_at`) VALUES
+(1, 1, 'item', NULL, NULL, 'Nire', NULL, '/test', '_blank', 'fa-test', '2022-01-15 14:54:50', '2022-01-15 14:54:50'),
+(2, 1, 'item', NULL, NULL, 'New 2', NULL, '/new', '_self', 'test-icon', '2022-01-15 14:56:27', '2022-01-15 14:56:27'),
+(3, 1, 'divider', NULL, NULL, NULL, 'Divider Test', NULL, '_self', NULL, '2022-01-15 15:11:43', '2022-01-15 15:11:43'),
+(4, 1, 'divider', NULL, NULL, NULL, 'Divider Test 1', NULL, '_self', NULL, '2022-01-15 15:21:28', '2022-01-15 15:21:28');
 
 -- --------------------------------------------------------
 
@@ -464,13 +482,13 @@ ALTER TABLE `media`
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `migrations`

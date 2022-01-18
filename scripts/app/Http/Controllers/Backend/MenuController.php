@@ -87,8 +87,9 @@ class MenuController extends Controller
      */
     public function update(Request $request, Menu $menu)
     {
+        Gate::authorize('app.menus.edit');
         $this->validate($request,[
-            'name' => 'required|string|unique:menus,name' . $menu->id,
+            'name' => 'required|string|unique:menus,name,' . $menu->id,
             'description'=> 'nullable|string'
         ]);
         $menu->update([

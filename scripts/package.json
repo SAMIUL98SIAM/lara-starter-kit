@@ -23,6 +23,7 @@
     "dependencies": {
         "dropify": "^0.2.2",
         "jquery": "^3.6.0",
+        "nestable2": "^1.6.0",
         "sweetalert2": "^11.3.4",
         "watch": "^0.13.0"
     }

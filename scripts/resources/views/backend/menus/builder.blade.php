@@ -34,7 +34,26 @@
                 <div class="dd">
                    @foreach ($menu->menuItems as $item)
                    <li>
-                       <span>{{$item->title}}</span>
+                    @if ($item->type == 'divider')
+                    <strong>{{$item->divider_title}}</strong>
+                    @else
+                    <span>{{$item->title}}</span>
+                    @endif
+
+                    <a class="btn btn-info btn-sm" href="{{ route('app.menus.item.edit',['id'=>$menu->id,'itemId'=>$item->id]) }}"><i
+                            class="fas fa-edit"></i>
+                        <span>Edit</span>
+                    </a>
+
+                    <button type="button" class="btn btn-danger btn-sm" onclick="deleteData({{ $item->id }})"><i class="fas fa-trash-alt"></i><span>Delete</span></button>
+                    <form id="delete-form-{{ $item->id }}"
+                        action="{{ route('app.menus.item.destroy',['id'=>$menu->id,'itemId'=>$item->id]) }}" method="POST"
+                        style="display: none;">
+                        @csrf()
+                        @method('DELETE')
+                    </form>
+
+
                    </li>
 
                    @endforeach
