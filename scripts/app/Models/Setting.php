@@ -23,4 +23,22 @@ class Setting extends Model
             return $default ;
         }
     }
+
+
+     /**
+     * Set a value for setting
+     *
+     * @param $key
+     * @param $value
+     * @return bool
+     */
+    public static function set($key, $value)
+    {
+        if ($setting = self::getAllSettings()->where('name', $key)->first()) {
+            return $setting->update([
+                'name' => $key,
+                'value' => $value]) ? $value : false;
+        }
+        return self::add($key, $value);
+    }
 }

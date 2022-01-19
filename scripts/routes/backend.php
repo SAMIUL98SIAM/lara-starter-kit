@@ -66,6 +66,9 @@ Route::group(['as'=>'settings.','prefix'=>'settings'],function()
 {
     Route::get('/general', [SettingController::class, 'general'])->name('general');
     Route::put('/general', [SettingController::class, 'generalUpdate'])->name('general.update');
+
+    Route::get('/appearence', [SettingController::class, 'appearence'])->name('appearence');
+    Route::put('/appearence', [SettingController::class, 'appearenceUpdate'])->name('appearence.update');
 });
 
 

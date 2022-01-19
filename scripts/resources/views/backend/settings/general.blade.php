@@ -17,12 +17,8 @@
 </div>
 
 <div class="row">
-
     <div class="col-md-3">
-        <div class="list-group">
-            <a href="{{route('app.settings.general')}}" class="list-group-item list-group-item-action">General</a>
-            <a href="{{route('app.settings.general')}}" class="list-group-item list-group-item-action">Appearence</a>
-        </div>
+        @include('backend.settings.sidebar')
     </div>
 
     <div class="col-md-9">
