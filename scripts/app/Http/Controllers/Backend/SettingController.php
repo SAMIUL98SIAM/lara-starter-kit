@@ -78,4 +78,62 @@ class SettingController extends Controller
     {
         Storage::disk('public')->delete($path);
     }
+
+
+
+
+    public function mail()
+    {
+        return view('backend.settings.mail');
+    }
+
+    /**
+     * Update Appearance
+     * @param UpdateAppearanceRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function mailUpdate(Request $request)
+    {
+        $this->validate($request,[
+            'mail_mailer'=> 'string|max:255',
+            'mail_host'=> 'nullable|string|max:255',
+            'mail_port'=> 'nullable|string|max:255',
+            'mail_username'=> 'nullable|string|max:255',
+            'mail_password'=> 'nullable|string|max:255',
+            'mail_encryption'=> 'nullable|string|max:255',
+            'mail_from_address'=> 'nullable|string|max:255',
+            'mail_from_name'=> 'nullable|string|max:255',
+        ]);
+         // Update .env mail settings
+
+        Setting::updateOrCreate(['name'=>'mail_mailer'],['value'=>$request->get('mail_mailer')]);
+        Artisan::call("env:set MAIL_MAILER='". $request->mail_mailer ."'");
+
+        Setting::updateOrCreate(['name'=>'mail_host'],['value'=>$request->get('mail_host')]);
+        Artisan::call("env:set MAIL_HOST='". $request->mail_host ."'");
+
+        Setting::updateOrCreate(['name'=>'mail_port'],['value'=>$request->get('mail_port')]);
+        Artisan::call("env:set MAIL_PORT='". $request->mail_port ."'");
+
+        Setting::updateOrCreate(['name'=>'mail_username'],['value'=>$request->get('mail_username')]);
+        Artisan::call("env:set MAIL_USERNAME='". $request->mail_username ."'");
+
+        Setting::updateOrCreate(['name'=>'mail_password'],['value'=>$request->get('mail_password')]);
+        Artisan::call("env:set MAIL_PASSWORD='". $request->mail_password ."'");
+
+        Setting::updateOrCreate(['name'=>'mail_encryption'],['value'=>$request->get('mail_encryption')]);
+        Artisan::call("env:set MAIL_ENCRYPTION='". $request->mail_encryption ."'");
+
+        Setting::updateOrCreate(['name'=>'mail_from_address'],['value'=>$request->get('mail_from_address')]);
+        Artisan::call("env:set MAIL_FROM_ADDRESS='". $request->mail_from_address ."'");
+
+        Setting::updateOrCreate(['name'=>'mail_from_name'],['value'=>$request->get('mail_from_name')]);
+        Artisan::call("env:set MAIL_FROM_NAME='". $request->mail_from_name ."'");
+
+        notify()->success('Settings Successfully Updated.','Success');
+        return back();
+    }
+
+
+
 }
