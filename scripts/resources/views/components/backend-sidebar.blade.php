@@ -5,7 +5,7 @@
         @else
              @if($item->childs->isEmpty())
                 <li>
-                    <a href="{{ $item->url }}" class="{{ Request::is(ltrim($item->url,'/').'*') ? 'mm-active' : '' }}">
+                    <a href="{{ url($item->url) }}" class="{{ Request::is(ltrim($item->url,'/').'*') ? 'mm-active' : '' }}">
                         <i class="metismenu-icon {{ $item->icon_class }}"></i>
                         {{ $item->title }}
                     </a>
@@ -19,7 +19,7 @@
                         @endif
                     @endforeach
                 >
-                    <a href="{{ $item->url }}" class="{{ Request::is(ltrim($item->url,'/').'*') ? 'mm-active' : '' }}">
+                    <a href="{{ url($item->url) }}" class="{{ Request::is(ltrim($item->url,'/').'*') ? 'mm-active' : '' }}">
                         <i class="metismenu-icon {{ $item->icon_class }}"></i>
                         {{ $item->title }}
                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
@@ -27,7 +27,7 @@
                     <ul>
                         @foreach($item->childs as $child)
                             <li>
-                                <a href="{{ $child->url }}" class="{{ Request::is(ltrim($child->url,'/').'*') ? 'mm-active' : '' }}">
+                                <a href="{{ url($child->url) }}" class="{{ Request::is(ltrim($child->url,'/').'*') ? 'mm-active' : '' }}">
                                     <i class="metismenu-icon {{ $child->icon_class }}"></i>
                                     {{ $child->title }}
                                 </a>

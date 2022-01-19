@@ -9,7 +9,7 @@ use App\Http\Controllers\Backend\MenuBuilderController;
 use App\Http\Controllers\Backend\MenuController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\PageController;
-
+use App\Http\Controllers\Backend\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +60,12 @@ Route::group(['as'=>'menus.','prefix'=>'menus/{id}'],function(){
         Route::put('/{itemId}/update', [MenuBuilderController::class, 'itemUpdate'])->name('update');
         Route::delete('/{itemId}/destroy', [MenuBuilderController::class, 'itemDestroy'])->name('destroy');
     });
+});
+
+Route::group(['as'=>'settings.','prefix'=>'settings'],function()
+{
+    Route::get('/general', [SettingController::class, 'general'])->name('general');
+    Route::put('/general', [SettingController::class, 'generalUpdate'])->name('general.update');
 });
 
 
