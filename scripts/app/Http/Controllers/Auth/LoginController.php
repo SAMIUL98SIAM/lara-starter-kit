@@ -4,6 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\App;
+use Laravel\Socialite\Facades\Socialite;
+use App\Models\User;
+use App\Models\Role;
+use GuzzleHttp\Psr7\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -37,4 +43,75 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+      // Github login
+      public function redirectToGithub()
+      {
+          return Socialite::driver('github')->redirect();
+      }
+
+      // Github callback
+      public function handleGithubCallback()
+      {
+          $user = Socialite::driver('github')->user();
+
+
+            // //upload images
+            // $user = new User();
+            // $file = $user['image'];
+            // $filename = date('YmdHi').$file->getClientOriginalName();
+            // $file->move(('uploads/user_images'),$filename);
+            // $user['image'] = $filename;
+            // $user->save();
+          $this->_registerOrLoginUser($user);
+
+          // Return home after login
+          notify()->success('You have successfully logged in with '.$user->name.' ','Success');
+          return redirect()->route('home');
+      }
+
+    public function  _registerOrLoginUser($data)
+    {
+
+        //Find existing user.
+        $user = User::whereEmail($data->getEmail())->first();
+
+        if (!$user) {
+            $user = new User();
+            $user->role_id = Role::where('slug','user')->first()->id;
+            $user->name = $data->name;
+            $user->email = $data->email;
+            $user->status = true;
+
+
+            $user->save();
+        }
+
+        Auth::login($user);
+
+        // if ($existingUser)
+        // {
+        //     Auth::login($existingUser);
+        // }
+        // else
+        // {
+        //     // Create new user.
+        //     // $newUser = User::create([
+        //     //     'role_id' => Role::where('slug','user')->first()->id,
+        //     //     'name' => $user->getName(),
+        //     //     'email' => $user->getEmail(),
+        //     //     'status' => true
+        //     // ]);
+        //     // upload images
+        //     ///$file = $request->file('image');
+        //     // $filename = date('YmdHi').$user['image']->getClientOriginalName();
+        //     // $user['image']->move(('uploads/user_images'),$filename);
+        //     // $newUser['image'] = $filename;
+        //     // $newUser->save();
+        //     // Auth::login($newUser);
+        // }
+        //notify()->success('You have successfully logged in with '.ucfirst($provider).'!','Success');
+        //return redirect($this->redirectPath());
+    }
+
 }

@@ -1,5 +1,11 @@
 @extends('layouts.backend.app')
 
+@push('css')
+    <link rel="stylesheet" href="{{asset('backend/dropify/sass/dropify.scss')}}">
+    <link rel="stylesheet" href="{{asset('backend/dropify/sass/demo.scss')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" integrity="sha512-EZSUkJWTjzDlspOoPSpUFR0o0Xy7jdzW//6qhUkoZ9c4StFkVsp9fbbd0O06p9ELS3H486m4wmrCELjza4JEog==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+@endpush
+
 @section('content')
 <div class="app-page-title">
     <div class="page-title-wrapper">
@@ -112,8 +118,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="image">Image</label>
-                                <input type="file" name="image" @isset($user) class="form-control @error('image') is-invalid @enderror" @endisset id="image">
+                                <lebel for="avatar">Avatar</lebel>
+                                <input type="file" id="image" name="image" class="dropify form-control @error('image') is-invalid @enderror" >
 
                                 @error('image')
                                 <p class="p-2">
@@ -122,10 +128,6 @@
                                     </span>
                                 </p>
                                 @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <img id="showImage" src="{{!empty($user->image)?url('/uploads/user_images/'.$user->image):url('/uploads/no_image.jpg')}}" height="150px" width="130px;" alt="Card image cap"/>
                             </div>
 
 
@@ -177,17 +179,11 @@
         });
     </script>
     <!-- Dropify -->
+    <script src="{{asset('backend/dropify/js/dropify.js')}}"></script>
+    <!-- Dropify -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
-            $('#image').change(function(e){
-                var reader = new FileReader();
-                reader.onload = function(e)
-                {
-                    $('#showImage').attr('src',e.target.result);
-                }
-                reader.readAsDataURL(e.target.files['0']);
-            });
-        });
+        $('.dropify').dropify();
     </script>
 @endpush
 

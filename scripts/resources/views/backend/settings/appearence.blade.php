@@ -3,7 +3,9 @@
 @push('css')
     <link rel="stylesheet" href="{{asset('backend/dropify/sass/dropify.scss')}}">
     <link rel="stylesheet" href="{{asset('backend/dropify/sass/demo.scss')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" integrity="sha512-EZSUkJWTjzDlspOoPSpUFR0o0Xy7jdzW//6qhUkoZ9c4StFkVsp9fbbd0O06p9ELS3H486m4wmrCELjza4JEog==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endpush
+
 
 @section('content')
 <div class="app-page-title">
@@ -89,6 +91,7 @@
 @push('js')
     <script src="{{asset('backend/dropify/js/dropify.js')}}"></script>
     <!-- Dropify -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript">
         $('.dropify').dropify();
     </script>

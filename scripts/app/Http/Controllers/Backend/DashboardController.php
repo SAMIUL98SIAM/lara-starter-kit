@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Menu;
+use App\Models\Page;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Role;
 use Illuminate\Support\Facades\Gate;
 
 class DashboardController extends Controller
@@ -25,7 +29,12 @@ class DashboardController extends Controller
      */
     public function __invoke()
     {
-        //Gate::authorize('admin-dashboard');
-        return view('backend.dashboard');
+        Gate::authorize('app.dashboard');
+        $data['usersCount'] = User::count();
+        $data['rolesCount'] = Role::count();
+        $data['pagesCount'] = Page::count();
+        $data['menusCount'] = Menu::count();
+        $data['users'] = User::orderBy('last_login_at','desc')->take(10)->get();
+        return view('backend.dashboard',$data);
     }
 }
