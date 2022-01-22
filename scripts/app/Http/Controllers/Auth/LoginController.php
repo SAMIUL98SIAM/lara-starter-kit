@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\App;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use App\Models\Role;
-use GuzzleHttp\Psr7\Request;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -44,35 +44,39 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-      // Github login
-      public function redirectToGithub()
-      {
-          return Socialite::driver('github')->redirect();
-      }
+    // Github login
+    public function redirectToGithub()
+    {
+        return Socialite::driver('github')->redirect();
+    }
+    public function handleGithubCallback(Request $request)
+    {
+        $user = Socialite::driver('github')->user();
 
-      // Github callback
-      public function handleGithubCallback()
-      {
-          $user = Socialite::driver('github')->user();
+        $this->_registerOrLoginUser($user);
+        // Return home after login
+        notify()->success('You have successfully logged in with '.$user->name.' ','Success');
+        return redirect()->route('home');
+    }
 
 
-            // //upload images
-            // $user = new User();
-            // $file = $user['image'];
-            // $filename = date('YmdHi').$file->getClientOriginalName();
-            // $file->move(('uploads/user_images'),$filename);
-            // $user['image'] = $filename;
-            // $user->save();
-          $this->_registerOrLoginUser($user);
+    // Google login
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+    public function handleGoogleCallback(Request $request)
+    {
+        $user = Socialite::driver('google')->user();
 
-          // Return home after login
-          notify()->success('You have successfully logged in with '.$user->name.' ','Success');
-          return redirect()->route('home');
-      }
+        $this->_registerOrLoginUser($user);
+        // Return home after login
+        notify()->success('You have successfully logged in with '.$user->name.' ','Success');
+        return redirect()->route('home');
+    }
 
     public function  _registerOrLoginUser($data)
     {
-
         //Find existing user.
         $user = User::whereEmail($data->getEmail())->first();
 
@@ -82,11 +86,15 @@ class LoginController extends Controller
             $user->name = $data->name;
             $user->email = $data->email;
             $user->status = true;
-
-
+            // if($data->file('image')){
+            //     $file = $data->file('image');
+            //     $filename = date('YmdHi').$file->getClientOriginalName();
+            //     $file->move(('uploads/user_images'),$filename);
+            //     $user['image'] = $filename;
+            // }
             $user->save();
-        }
 
+        }
         Auth::login($user);
 
         // if ($existingUser)

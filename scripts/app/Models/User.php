@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Notifications\Notifiable;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\Models\Media;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -36,6 +39,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function registerMediaCollections()
+    {
+        $this->addMediaCollection('image')
+            ->singleFile();
+    }
 
     public function role()
     {

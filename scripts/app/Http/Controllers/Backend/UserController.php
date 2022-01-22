@@ -62,10 +62,10 @@ class UserController extends Controller
             'status' => $request->filled('status'),
         ]);
 
-        $file = $request->file('image');
-        $filename = date('YmdHi').$file->getClientOriginalName();
-        $file->move(('uploads/user_images'),$filename);
-        $user['image'] = $filename;
+         // upload images
+         if ($request->hasFile('image')) {
+            $user->addMedia($request->image)->toMediaCollection('image');
+        }
         $user->save();
         notify()->success('User Successfully Added.', 'Added');
         return redirect()->route('app.users.index');

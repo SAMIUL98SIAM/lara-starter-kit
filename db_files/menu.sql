@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2022 at 07:15 PM
+-- Generation Time: Jan 22, 2022 at 12:16 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -81,7 +81,7 @@ CREATE TABLE `menus` (
 --
 
 INSERT INTO `menus` (`id`, `name`, `description`, `deletable`, `created_at`, `updated_at`) VALUES
-(1, 'backend-sidebar', 'This is backend sidebar', 0, '2022-01-19 07:14:59', '2022-01-19 07:14:59');
+(1, 'backend-sidebar', 'This is backend sidebar', 0, '2022-01-20 08:51:43', '2022-01-20 08:51:43');
 
 -- --------------------------------------------------------
 
@@ -109,16 +109,16 @@ CREATE TABLE `menu_items` (
 --
 
 INSERT INTO `menu_items` (`id`, `menu_id`, `type`, `parent_id`, `order`, `title`, `divider_title`, `url`, `target`, `icon_class`, `created_at`, `updated_at`) VALUES
-(1, 1, 'divider', NULL, 1, NULL, 'Menus', NULL, '_self', NULL, '2022-01-19 07:14:59', '2022-01-19 07:14:59'),
-(2, 1, 'item', NULL, 2, 'Dashboard', NULL, '/app/dashboard', '_self', 'metismenu-icon pe-7s-rocket', '2022-01-19 07:14:59', '2022-01-19 07:14:59'),
-(3, 1, 'item', NULL, 3, 'Pages', NULL, '/app/pages', '_self', 'metismenu-icon pe-7s-news-paper', '2022-01-19 07:14:59', '2022-01-19 07:14:59'),
-(4, 1, 'divider', NULL, 4, NULL, 'Access Control', NULL, '_self', NULL, '2022-01-19 07:14:59', '2022-01-19 07:14:59'),
-(5, 1, 'item', NULL, 5, 'Roles', NULL, '/app/roles', '_self', 'metismenu-icon pe-7s-check', '2022-01-19 07:14:59', '2022-01-19 07:14:59'),
-(6, 1, 'item', NULL, 6, 'Users', NULL, '/app/users', '_self', 'metismenu-icon pe-7s-users', '2022-01-19 07:14:59', '2022-01-19 07:14:59'),
-(7, 1, 'divider', NULL, 7, NULL, 'System', NULL, '_self', NULL, '2022-01-19 07:14:59', '2022-01-19 07:14:59'),
-(8, 1, 'item', NULL, 8, 'Menus', NULL, '/app/menus', '_self', 'metismenu-icon pe-7s-menu', '2022-01-19 07:14:59', '2022-01-19 07:54:39'),
-(9, 1, 'item', NULL, 9, 'Backups', NULL, '/app/backups', '_self', 'metismenu-icon pe-7s-cloud', '2022-01-19 07:14:59', '2022-01-19 07:56:18'),
-(10, 1, 'item', NULL, 10, 'Settings', NULL, '/app/settings/general', '_self', 'metismenu-icon pe-7s-settings', '2022-01-19 07:14:59', '2022-01-19 11:18:13');
+(1, 1, 'divider', NULL, 1, NULL, 'Menus', NULL, '_self', NULL, '2022-01-20 08:51:43', '2022-01-20 08:51:43'),
+(2, 1, 'item', NULL, 2, 'Dashboard', NULL, '/app/dashboard', '_self', 'metismenu-icon pe-7s-rocket', '2022-01-20 08:51:43', '2022-01-20 08:51:43'),
+(3, 1, 'item', NULL, 3, 'Pages', NULL, '/app/pages', '_self', 'metismenu-icon pe-7s-news-paper', '2022-01-20 08:51:43', '2022-01-20 08:51:43'),
+(4, 1, 'divider', NULL, 4, NULL, 'Access Control', NULL, '_self', NULL, '2022-01-20 08:51:43', '2022-01-20 08:51:43'),
+(5, 1, 'item', NULL, 5, 'Roles', NULL, '/app/roles', '_self', 'metismenu-icon pe-7s-check', '2022-01-20 08:51:43', '2022-01-20 16:40:24'),
+(6, 1, 'item', NULL, 6, 'Users', NULL, '/app/users', '_self', 'metismenu-icon pe-7s-users', '2022-01-20 08:51:43', '2022-01-20 16:40:32'),
+(7, 1, 'divider', NULL, 7, NULL, 'System', NULL, '_self', NULL, '2022-01-20 08:51:43', '2022-01-20 16:40:32'),
+(8, 1, 'item', NULL, 8, 'Menus', NULL, '/app/menus', '_self', 'metismenu-icon pe-7s-menu', '2022-01-20 08:51:43', '2022-01-20 16:40:32'),
+(9, 1, 'item', NULL, 9, 'Backups', NULL, '/app/backups', '_self', 'metismenu-icon pe-7s-cloud', '2022-01-20 08:51:43', '2022-01-20 16:40:32'),
+(10, 1, 'item', NULL, 10, 'Settings', NULL, '/app/settings/general', '_self', 'metismenu-icon pe-7s-settings', '2022-01-20 08:51:43', '2022-01-20 16:40:32');
 
 -- --------------------------------------------------------
 
@@ -145,11 +145,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2022_01_10_161551_create_permissions_table', 1),
 (7, '2022_01_10_161712_create_roles_table', 1),
 (8, '2022_01_10_163552_create_permission_role_table', 1),
-(9, '2022_01_14_151326_create_media_table', 1),
 (10, '2022_01_15_144808_create_pages_table', 1),
 (11, '2022_01_15_181958_create_menus_table', 1),
 (12, '2022_01_15_182857_create_menu_items_table', 1),
-(13, '2022_01_19_125218_create_settings_table', 1);
+(13, '2022_01_19_125218_create_settings_table', 1),
+(14, '2022_01_20_214445_create_media_table', 2);
 
 -- --------------------------------------------------------
 
@@ -169,12 +169,12 @@ CREATE TABLE `modules` (
 --
 
 INSERT INTO `modules` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Admin Dashboard', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(2, 'Role Management', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(3, 'User Management', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(4, 'Backups', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(5, 'Page Management', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(6, 'Menu Management', '2022-01-19 07:14:57', '2022-01-19 07:14:57');
+(1, 'Admin Dashboard', '2022-01-20 08:51:40', '2022-01-20 08:51:40'),
+(2, 'Role Management', '2022-01-20 08:51:40', '2022-01-20 08:51:40'),
+(3, 'User Management', '2022-01-20 08:51:40', '2022-01-20 08:51:40'),
+(4, 'Backups', '2022-01-20 08:51:40', '2022-01-20 08:51:40'),
+(5, 'Page Management', '2022-01-20 08:51:41', '2022-01-20 08:51:41'),
+(6, 'Menu Management', '2022-01-20 08:51:41', '2022-01-20 08:51:41');
 
 -- --------------------------------------------------------
 
@@ -201,7 +201,7 @@ CREATE TABLE `pages` (
 --
 
 INSERT INTO `pages` (`id`, `title`, `slug`, `excerpt`, `body`, `meta_description`, `meta_keywords`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'About', 'about', 'This is about page', '<h1>This is about page</h1>', 'about desc', 'about,etc', NULL, 1, '2022-01-19 07:14:59', '2022-01-19 07:14:59');
+(1, 'About', 'about', 'This is about page', '<h1>This is about page</h1>', 'about desc', 'about,etc', NULL, 1, '2022-01-20 08:51:43', '2022-01-20 08:51:43');
 
 -- --------------------------------------------------------
 
@@ -235,28 +235,28 @@ CREATE TABLE `permissions` (
 --
 
 INSERT INTO `permissions` (`id`, `module_id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Access Dashboard', 'app.dashboard', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(2, 2, 'Access Role', 'app.roles.index', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(3, 2, 'Create Role', 'app.roles.create', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(4, 2, 'Edit Role', 'app.roles.edit', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(5, 2, 'Delete Role', 'app.roles.destroy', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(6, 3, 'Access User', 'app.users.index', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(7, 3, 'Create User', 'app.users.create', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(8, 3, 'Edit User', 'app.users.edit', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(9, 3, 'Delete User', 'app.users.destroy', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(10, 4, 'Access Backup', 'app.backups.index', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(11, 4, 'Create Backup', 'app.backups.create', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(12, 4, 'Download Backup', 'app.backups.download', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(13, 4, 'Delete Backup', 'app.backups.destroy', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(14, 5, 'Access Pages', 'app.pages.index', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(15, 5, 'Create Page', 'app.pages.create', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(16, 5, 'Edit Page', 'app.pages.edit', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(17, 5, 'Delete Page', 'app.pages.destroy', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(18, 6, 'Access Menus', 'app.menus.index', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(19, 6, 'Access Menus Builder', 'app.menus.builder', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(20, 6, 'Create Menu', 'app.menus.create', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(21, 6, 'Edit Menu', 'app.menus.edit', '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(22, 6, 'Delete Menu', 'app.menus.destroy', '2022-01-19 07:14:57', '2022-01-19 07:14:57');
+(1, 1, 'Access Dashboard', 'app.dashboard', '2022-01-20 08:51:40', '2022-01-20 08:51:40'),
+(2, 2, 'Access Role', 'app.roles.index', '2022-01-20 08:51:40', '2022-01-20 08:51:40'),
+(3, 2, 'Create Role', 'app.roles.create', '2022-01-20 08:51:40', '2022-01-20 08:51:40'),
+(4, 2, 'Edit Role', 'app.roles.edit', '2022-01-20 08:51:40', '2022-01-20 08:51:40'),
+(5, 2, 'Delete Role', 'app.roles.destroy', '2022-01-20 08:51:40', '2022-01-20 08:51:40'),
+(6, 3, 'Access User', 'app.users.index', '2022-01-20 08:51:40', '2022-01-20 08:51:40'),
+(7, 3, 'Create User', 'app.users.create', '2022-01-20 08:51:40', '2022-01-20 08:51:40'),
+(8, 3, 'Edit User', 'app.users.edit', '2022-01-20 08:51:40', '2022-01-20 08:51:40'),
+(9, 3, 'Delete User', 'app.users.destroy', '2022-01-20 08:51:40', '2022-01-20 08:51:40'),
+(10, 4, 'Access Backup', 'app.backups.index', '2022-01-20 08:51:41', '2022-01-20 08:51:41'),
+(11, 4, 'Create Backup', 'app.backups.create', '2022-01-20 08:51:41', '2022-01-20 08:51:41'),
+(12, 4, 'Download Backup', 'app.backups.download', '2022-01-20 08:51:41', '2022-01-20 08:51:41'),
+(13, 4, 'Delete Backup', 'app.backups.destroy', '2022-01-20 08:51:41', '2022-01-20 08:51:41'),
+(14, 5, 'Access Pages', 'app.pages.index', '2022-01-20 08:51:41', '2022-01-20 08:51:41'),
+(15, 5, 'Create Page', 'app.pages.create', '2022-01-20 08:51:41', '2022-01-20 08:51:41'),
+(16, 5, 'Edit Page', 'app.pages.edit', '2022-01-20 08:51:41', '2022-01-20 08:51:41'),
+(17, 5, 'Delete Page', 'app.pages.destroy', '2022-01-20 08:51:41', '2022-01-20 08:51:41'),
+(18, 6, 'Access Menus', 'app.menus.index', '2022-01-20 08:51:41', '2022-01-20 08:51:41'),
+(19, 6, 'Access Menus Builder', 'app.menus.builder', '2022-01-20 08:51:41', '2022-01-20 08:51:41'),
+(20, 6, 'Create Menu', 'app.menus.create', '2022-01-20 08:51:41', '2022-01-20 08:51:41'),
+(21, 6, 'Edit Menu', 'app.menus.edit', '2022-01-20 08:51:41', '2022-01-20 08:51:41'),
+(22, 6, 'Delete Menu', 'app.menus.destroy', '2022-01-20 08:51:41', '2022-01-20 08:51:41');
 
 -- --------------------------------------------------------
 
@@ -298,7 +298,12 @@ INSERT INTO `permission_role` (`id`, `permission_id`, `role_id`, `created_at`, `
 (19, 19, 1, NULL, NULL),
 (20, 20, 1, NULL, NULL),
 (21, 21, 1, NULL, NULL),
-(22, 22, 1, NULL, NULL);
+(22, 22, 1, NULL, NULL),
+(23, 1, 2, NULL, NULL),
+(24, 2, 2, NULL, NULL),
+(25, 3, 2, NULL, NULL),
+(26, 4, 2, NULL, NULL),
+(27, 5, 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -339,8 +344,8 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `slug`, `description`, `deletable`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin', NULL, 0, '2022-01-19 07:14:57', '2022-01-19 07:14:57'),
-(2, 'User', 'user', NULL, 0, '2022-01-19 07:14:59', '2022-01-19 07:14:59');
+(1, 'Admin', 'admin', NULL, 0, '2022-01-20 08:51:41', '2022-01-20 08:51:41'),
+(2, 'User', 'user', NULL, 0, '2022-01-20 08:51:43', '2022-01-20 08:51:43');
 
 -- --------------------------------------------------------
 
@@ -361,12 +366,19 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `name`, `value`, `created_at`, `updated_at`) VALUES
-(1, 'test', 'Hello . World', NULL, NULL),
-(2, 'site_title', 'LaraStarter', '2022-01-19 08:40:59', '2022-01-19 08:47:09'),
-(3, 'site_description', 'Just for test purpose', '2022-01-19 08:41:00', '2022-01-19 11:18:36'),
-(4, 'site_address', 'Hamburg', '2022-01-19 08:41:00', '2022-01-19 08:42:25'),
-(5, 'site_logo', 'HSl6BRLszPsswSFng4YkrtoUgcF9INS8P9ONDv8Y.png', '2022-01-19 11:09:09', '2022-01-19 11:09:48'),
-(6, 'site_favicon', 'logos/QvuGRYWeNUOtEJZz1q4glVJEo1Bvf46mwt79rVrx.jpg', '2022-01-19 11:09:09', '2022-01-19 11:09:09');
+(1, 'site_title', 'Lara Starter', '2022-01-20 14:39:42', '2022-01-20 14:39:42'),
+(2, 'site_description', 'this is laravel site', '2022-01-20 14:39:44', '2022-01-20 14:39:44'),
+(3, 'site_address', 'Dhaka', '2022-01-20 14:39:44', '2022-01-20 14:39:44'),
+(4, 'mail_mailer', 'smtp', '2022-01-20 16:37:49', '2022-01-20 16:37:49'),
+(5, 'mail_host', 'smtp.gmail.com', '2022-01-20 16:37:50', '2022-01-20 16:37:50'),
+(6, 'mail_port', '587', '2022-01-20 16:37:50', '2022-01-20 16:37:50'),
+(7, 'mail_username', 'orbitechproject123@gmail.com', '2022-01-20 16:37:50', '2022-01-20 16:37:50'),
+(8, 'mail_password', '2980orbitech', '2022-01-20 16:37:50', '2022-01-20 16:37:50'),
+(9, 'mail_encryption', 'tls', '2022-01-20 16:37:50', '2022-01-20 16:37:50'),
+(10, 'mail_from_address', 'orbitechproject123@gmail.com', '2022-01-20 16:37:50', '2022-01-20 16:37:50'),
+(11, 'mail_from_name', 'Orbitech LaraStarter Project', '2022-01-20 16:37:50', '2022-01-20 16:37:50'),
+(12, 'site_logo', 'logos/P07cpu2JcEq44P63i9oz8dlwoMcIUOddQLWhCTT9.png', '2022-01-20 16:38:28', '2022-01-20 16:38:28'),
+(13, 'site_favicon', 'logos/pHRl2Fi37eQwk5FZb0AsDEo6ia3QgYgInOdAzHYG.jpg', '2022-01-20 16:38:28', '2022-01-20 16:38:28');
 
 -- --------------------------------------------------------
 
@@ -394,8 +406,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `email_verified_at`, `password`, `image`, `status`, `remember_token`, `last_login_at`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Admin', 'admin@mail.com', NULL, '$2y$10$WMMhEfQtNvLwW.h7/cZMneA.kRtJF9zXXCJ3e0M6iLyFT40ypR7AS', NULL, 1, NULL, NULL, '2022-01-19 07:14:59', '2022-01-19 07:14:59'),
-(2, 2, 'Jone Doe', 'user@mail.com', NULL, '$2y$10$GX/B06dXJrXgx2/zQewEW.6/feoC1cadFzvMQiEjGsCX0y3U8hdty', NULL, 0, NULL, NULL, '2022-01-19 07:14:59', '2022-01-19 07:14:59');
+(1, 1, 'Admin', 'admin@mail.com', NULL, '$2y$10$WMMhEfQtNvLwW.h7/cZMneA.kRtJF9zXXCJ3e0M6iLyFT40ypR7AS', '269166050202201201454e5ed5f44-43aa-45f0-9cbe-35ebf0c512cf.jfif', 1, NULL, NULL, '2022-01-20 08:51:43', '2022-01-20 08:54:57'),
+(2, 2, 'Jone Doe jon', 'user@mail.com', NULL, '$2y$10$Lz38XSFlzW7FfVb420598OGV8bDq2eLdsuYcwzgOAyOHiEf5BQubq', '202201212141download.png', 1, NULL, NULL, '2022-01-20 08:51:43', '2022-01-21 15:41:14'),
+(3, 2, 'Humayun', 'Humayun12@gmail.com', NULL, '$2y$10$PhLfoiCjJEEH77yqaLkEceRhhgkULp81DsK4dlqPmJz368fVEzTiW', '202201202226272026184_344599561002833_6576689558694850458_n.jpg', 1, NULL, NULL, '2022-01-20 16:26:43', '2022-01-21 15:42:00'),
+(6, 2, 'Orbitech ', 'orbitechproject123@gmail.com', NULL, NULL, NULL, 1, NULL, NULL, '2022-01-21 17:06:47', '2022-01-21 17:06:47');
 
 --
 -- Indexes for dumped tables
@@ -532,7 +546,7 @@ ALTER TABLE `menu_items`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `modules`
@@ -556,7 +570,7 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `permission_role`
 --
 ALTER TABLE `permission_role`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -574,13 +588,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

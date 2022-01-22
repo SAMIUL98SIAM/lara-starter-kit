@@ -118,9 +118,8 @@
                             </div>
 
                             <div class="form-group">
-                                <lebel for="avatar">Avatar</lebel>
+                                <label for="image">Image</label>
                                 <input type="file" id="image" name="image" class="dropify form-control @error('image') is-invalid @enderror" >
-
                                 @error('image')
                                 <p class="p-2">
                                     <span class="text-danger" role="alert">

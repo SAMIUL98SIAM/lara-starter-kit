@@ -26,6 +26,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['as' => 'login.', 'prefix' => 'login'], function () {
     Route::get('/github', [LoginController::class, 'redirectToGithub'])->name('github');
     Route::get('/github/callback', [LoginController::class, 'handleGithubCallback'])->name('callback');
+
+    Route::get('/google', [LoginController::class, 'redirectToGoogle'])->name('google');
+    Route::get('/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('callback');
 });
 
 
