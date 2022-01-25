@@ -44,6 +44,22 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+
+    // Facebook login
+    public function redirectToFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+    public function handleFacebookCallback(Request $request)
+    {
+        $user = Socialite::driver('facebook')->user();
+
+        $this->_registerOrLoginUser($user);
+        // Return home after login
+        //notify()->success('You have successfully logged in with '.$user->name.' ','Success');
+        return redirect()->route('home');
+    }
+
     // Github login
     public function redirectToGithub()
     {

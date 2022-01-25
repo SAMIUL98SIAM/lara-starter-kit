@@ -29,6 +29,9 @@ Route::group(['as' => 'login.', 'prefix' => 'login'], function () {
 
     Route::get('/google', [LoginController::class, 'redirectToGoogle'])->name('google');
     Route::get('/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('callback');
+
+    Route::get('/facebook', [LoginController::class, 'redirectToFacebook'])->name('facebook');
+    Route::get('/facebook/callback', [LoginController::class, 'handleFacebookCallback'])->name('callback');
 });
 
 

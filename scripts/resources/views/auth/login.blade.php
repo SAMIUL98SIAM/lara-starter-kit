@@ -70,7 +70,8 @@
                             <strong>Or Sign in with</strong>
                         </p>
 
-                        <a href="{{ route('login.google') }}" class="btn btn-outline-primary">Google</a>
+                        <a href="{{ route('login.facebook') }}" class="btn btn-outline-primary">Facebook</a>
+                        <a href="{{ route('login.google') }}" class="btn btn-outline-warning">Google</a>
                         <a href="{{ route('login.github') }}" class="btn btn-outline-secondary">Github</a>
                     </div>
                 </div>
