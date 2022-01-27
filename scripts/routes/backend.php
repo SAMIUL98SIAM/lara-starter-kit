@@ -72,6 +72,10 @@ Route::group(['as'=>'settings.','prefix'=>'settings'],function()
 
     Route::get('/mail', [SettingController::class, 'mail'])->name('mail');
     Route::put('/mail', [SettingController::class, 'mailUpdate'])->name('mail.update');
+
+
+    Route::get('/socialite', [SettingController::class, 'socialite'])->name('socialite');
+    Route::put('/socialite', [SettingController::class, 'socialiteUpdate'])->name('socialite.update');
 });
 
 

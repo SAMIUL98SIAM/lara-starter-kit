@@ -135,5 +135,51 @@ class SettingController extends Controller
     }
 
 
+    public function socialite()
+    {
+        return view('backend.settings.socialite');
+    }
+
+    /**
+     * Update Appearance
+     * @param UpdateAppearanceRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function socialiteUpdate(Request $request)
+    {
+        $this->validate($request,[
+            'facebook_client_id' => 'string|nullable',
+            'facebook_client_secret' => 'string|nullable',
+
+            'google_client_id' => 'string|nullable',
+            'google_client_secret' => 'string|nullable',
+
+            'github_client_id' => 'string|nullable',
+            'github_client_secret' => 'string|nullable',
+        ]);
+        // Update .env mail settings
+
+        Setting::updateOrCreate(['name'=>'facebook_client_id'],['value'=>$request->get('facebook_client_id')]);
+        Artisan::call("env:set FACEBOOK_CLIENT_ID='". $request->facebook_client_id ."'");
+        Setting::updateOrCreate(['name'=>'facebook_client_secret'],['value'=>$request->get('facebook_client_secret')]);
+        Artisan::call("env:set FACEBOOK_CLIENT_SECRET='". $request->facebook_client_secret ."'");
+
+
+        Setting::updateOrCreate(['name'=>'google_client_id'],['value'=>$request->get('google_client_id')]);
+        Artisan::call("env:set GOOGLE_CLIENT_ID='". $request->google_client_id ."'");
+        Setting::updateOrCreate(['name'=>'google_client_secret'],['value'=>$request->get('google_client_secret')]);
+        Artisan::call("env:set GOOGLE_CLIENT_SECRET='". $request->google_client_secret ."'");
+
+
+        Setting::updateOrCreate(['name'=>'github_client_id'],['value'=>$request->get('github_client_id')]);
+        Artisan::call("env:set GITHUB_CLIENT_ID='". $request->github_client_id ."'");
+        Setting::updateOrCreate(['name'=>'github_client_secret'],['value'=>$request->get('github_client_secret')]);
+        Artisan::call("env:set GITHUB_CLIENT_SECRET='". $request->github_client_secret ."'");
+
+        notify()->success('Settings Successfully Updated.','Success');
+        return back();
+    }
+
+
 
 }
