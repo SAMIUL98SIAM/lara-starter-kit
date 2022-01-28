@@ -63,10 +63,19 @@ class PageController extends Controller
         ]);
 
         //upload image
-        $file = $request->file('image');
-        $filename = date('YmdHi').$file->getClientOriginalName();
-        $file->move(('uploads/page_images'),$filename);
-        $page['image'] = $filename;
+
+        if($request->file('image')){
+            $file = $request->file('image');
+            //@unlink(('upload/logo_image'.$page->image));
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(('upload/page_images'),$filename);
+            $page['image'] = $filename;
+        }
+
+        // $file = $request->file('image');
+        // $filename = date('YmdHi').$file->getClientOriginalName();
+        // $file->move(('uploads/page_images'),$filename);
+        // $page['image'] = $filename;
         $page->save();
 
         notify()->success('Page Successfully Added.', 'Added');
@@ -115,11 +124,13 @@ class PageController extends Controller
             'status' => $request->filled('status'),
         ]);
 
-        $file = $request->file('image');
-        @unlink('uploads/page_images'.$page->image);
-        $filename = date('YmdHi').$file->getClientOriginalName();
-        $file->move(('uploads/page_images'),$filename);
-        $page['image'] = $filename;
+        if($request->file('image')){
+            $file = $request->file('image');
+            @unlink(('uploads/page_images'.$page->image));
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(('uploads/page_images'),$filename);
+            $page['image'] = $filename;
+        }
         $page->save();
 
         notify()->success('Page Successfully Update.', 'Updated');

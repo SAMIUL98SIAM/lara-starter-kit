@@ -45,6 +45,16 @@ class LoginController extends Controller
     }
 
 
+    // protected function authenticated(Request $request, $user)
+    // {
+    //     $user->update([
+    //         'last_login_at' => now()
+    //     ]);
+    //     // Show greetings.
+    //     notify()->success("Hey $user->name, Welcome Back!",'Success');
+    // }
+
+
     // Facebook login
     public function redirectToFacebook()
     {
@@ -112,30 +122,9 @@ class LoginController extends Controller
 
         }
         Auth::login($user);
-
-        // if ($existingUser)
-        // {
-        //     Auth::login($existingUser);
-        // }
-        // else
-        // {
-        //     // Create new user.
-        //     // $newUser = User::create([
-        //     //     'role_id' => Role::where('slug','user')->first()->id,
-        //     //     'name' => $user->getName(),
-        //     //     'email' => $user->getEmail(),
-        //     //     'status' => true
-        //     // ]);
-        //     // upload images
-        //     ///$file = $request->file('image');
-        //     // $filename = date('YmdHi').$user['image']->getClientOriginalName();
-        //     // $user['image']->move(('uploads/user_images'),$filename);
-        //     // $newUser['image'] = $filename;
-        //     // $newUser->save();
-        //     // Auth::login($newUser);
-        // }
-        //notify()->success('You have successfully logged in with '.ucfirst($provider).'!','Success');
-        //return redirect($this->redirectPath());
     }
+
+
+
 
 }
