@@ -118,9 +118,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="image">Image</label>
-                                <input type="file" id="image" name="image" class="dropify form-control @error('image') is-invalid @enderror" >
-                                @error('image')
+                                <label for="avatar">Avatar</label>
+                                <input type="file" id="avatar" name="avatar" class="dropify form-control @error('avatar') is-invalid @enderror" data-default-file="{{isset($user) ? $user->getFirstMediaUrl('avatar'):''}}">
+                                @error('avatar')
                                 <p class="p-2">
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $message }}</strong>

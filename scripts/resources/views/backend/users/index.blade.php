@@ -47,7 +47,7 @@
                                             <div class="widget-content-left mr-3">
                                                 <div class="widget-content-left">
                                                     <img width="40" class="rounded-circle"
-                                                    src="{{!empty($user->image)?url('/uploads/user_images/'.$user->image):url('/uploads/no_image.jpg')}}" alt="User Avatar">
+                                                    src="{{config('app.placeholder').'160.png'}}" alt="User Avatar">
                                                 </div>
                                             </div>
                                             <div class="widget-content-left flex2">
